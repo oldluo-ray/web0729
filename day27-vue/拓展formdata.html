@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <form action="" id="form"> -->
+    <!-- 用户名: <input type="text" name="username" /> <br /> -->
+    <!-- 密码: <input type="password" name="password" /> <br /> -->
+    文件: <input type="file" name="file" id="file" /> <br />
+    <button id="btn">按钮</button>
+    <!-- </form> -->
+    <script>
+      const btn = document.getElementById('btn')
+      const form = document.getElementById('form')
+
+      btn.onclick = function (e) {
+        e.preventDefault()
+        // 自己一个一个的获取元素,收集数据非常繁琐,所以直接使用formdata收集数据
+        // 1. 创建formData实例
+        // const formData = new FormData(form的真实dom)
+        // 此时formData中就拥有了表单中的所有数据
+        // const formData = new FormData(form)
+        // console.log(formData.get('username'))
+        // console.log(formData.get('password'))
+
+        // 如果没有form表单,只有一个上传文件的表单项,应该如何处理:
+        const formData = new FormData()
+        // 获取上传文件的表单项的真实dom
+        const file = document.getElementById('file')
+        // 从真实dom中获取要上传的文件对象
+        const fileObj = file.files[0]
+        // 将文件对象添加到formData中
+        formData.append('xxx', fileObj)
+        // 配合formData如何发送ajax
+        const xhr = new XMLHttpRequest()
+        // // 使用formData,请求方式只能用post
+        xhr.open('post', 'http://localhost:5000/test')
+        // // 虽然是post请求,但是由于使用了formData,所以无需设置请求头(content-type). 应该浏览器会自动帮我们添加
+        xhr.upload.onprogress = function (e) {
+          console.log(e.loaded, e.total)
+        }
+
+        xhr.send(formData)
+      }
+    </script>
+  </body>
+</html>

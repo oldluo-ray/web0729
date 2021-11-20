@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="vewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 1. 引入vue.js -->
+    <script src="./js/vue.js"></script>
+    <!-- 2. 定义一个根标签(定义模板) -->
+    <div id="root">
+      <h1>hello vue</h1>
+      <div>{{msg}}</div>
+      <div>{{count}}</div>
+      <div>{{true}}</div>
+      <!-- 注意: 虽然函数也是表达式,但是不能直接渲染 -->
+      <!-- 可以调用函数,渲染函数的返回值.如果是undefined则什么都不渲染 -->
+      <!-- 可以使用变量接收函数,使用变量渲染函数 -->
+      <div>{{fn}}</div>
+      <div>{{fn()}}</div>
+      <!-- 不能直接写字面量对象,可以写在data中渲染 -->
+      <div>{{obj}}</div>
+      <div>{{['a','b','c']}}</div>
+      <div>{{1+1}}</div>
+      <div>{{true ? 'haha': 'hehe'}}</div>
+      <div>{{true&& 123}}</div>
+
+      <!-- 注意: vue中{{}}只能写在标签的子节点.为了渲染值
+      如果要控制标签的属性的值,需要使用v-bind:属性="表达式" -->
+      <input type="text" v-bind:value="1+1" />
+      <input type="text" :value="1+1" />
+    </div>
+
+    <!-- 3. 创建vue实例,管理html标签(管理模板) -->
+    <script>
+      new Vue({
+        // 绑定要控制的模板
+        el: '#root',
+        //定义模板中要使用的数据
+        data: {
+          value: '567',
+          msg: '第一次使用vue',
+          count: 0,
+          fn: () => {
+            console.log(123)
+            return undefined
+          },
+          obj: {
+            name: 'zs',
+          },
+        },
+      })
+    </script>
+  </body>
+</html>

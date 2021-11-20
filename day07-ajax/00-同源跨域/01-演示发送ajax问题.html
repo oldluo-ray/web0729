@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn">按钮</button>
+    <!-- script标签不受同源策略的影响,可以给不同源的地址发送请求,接收到的内容会被当做js解析 -->
+    <script src="http://127.0.0.1:5000/test">
+      // const obj = {name: "zs"}
+        // {name: "zs"}
+          // test-get
+          // 在某些浏览器中,如果一个标签写了id.则浏览器会自动帮我们获取这个标签,变量名就是id名(这种方式只用于测试的情况下,因为有兼容性问题)
+          // btn.onclick = function () {
+          //   // const xhr = new XMLHttpRequest()
+          //   // xhr.open('get', 'http://127.0.0.1:5000/test')
+          //   // xhr.send()
+          // }
+    </script>
+    <script>
+      // console.log(obj)
+    </script>
+  </body>
+</html>

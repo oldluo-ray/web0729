@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="vewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 1. 引入vue.js -->
+    <script src="./js/vue.js"></script>
+    <!-- 2. 定义一个根标签(定义模板) -->
+    <div id="root">
+      <h1>{{gender}}</h1>
+      <button @click="sex='male'">按钮1</button>
+      <button @click="obj={x:1}">按钮2</button>
+      <button @click="obj.a.name='ls'">按钮3</button>
+      <button @click="obj.b='ls'">按钮4</button>
+    </div>
+
+    <!-- 3. 创建vue实例,管理html标签(管理模板) -->
+    <script>
+      new Vue({
+        el: '#root',
+        data: {
+          sex: 'female',
+          gender: '女',
+          obj: {
+            a: {
+              name: 'zs',
+            },
+            b: '123',
+          },
+        },
+        watch: {
+          // sex: {
+          //   immediate: true, // handler初始化时就会被调用一次
+          //   handler(newValue) {
+          //     this.gender = this.sex === 'female' ? '女' : '男'
+          //   },
+          // },
+          // obj: {
+          //   deep: true, // 默认只监视obj的值是否变化,如果像监视obj里面的值变化,添加deep
+          //   handler(newValue) {
+          //     console.log('监听到obj的数据发生变化了', newValue)
+          //   },
+          // },
+          // sex: {
+          //   handler(newValue) {
+          //     this.gender = this.sex === 'female' ? '女' : '男'
+          //   },
+          // },
+          // 简写:
+          sex(newValue) {
+            this.gender = this.sex === 'female' ? '女' : '男'
+          },
+        },
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .one {
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!-- 引入react包 react.js react-dom.js -->
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="js/babel.min.js"></script>
+
+    <script type="text/babel">
+      const div = (
+        <div id="box" i="0" className="one" htmlFor="123">
+          <h1>react</h1>
+          <div>
+            <input type="text" value={'hello'} />
+            <input type="checkbox" checked={false} />
+            <button
+              onClick={function () {
+                alert('按钮点击了')
+              }}
+            >
+              按钮
+            </button>
+            <div
+              className="one"
+              style={{ fontSize: 40, backgroundColor: 'red' }}
+            >
+              样式
+            </div>
+          </div>
+        </div>
+      )
+
+      ReactDOM.render(div, document.getElementById('root'))
+    </script>
+  </body>
+</html>

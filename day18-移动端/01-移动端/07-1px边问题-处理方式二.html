@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      .one {
+        width: 3.45rem;
+        height: 1.5rem;
+        margin: 0.15rem;
+        background-color: skyblue;
+        border: 1px solid black;
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="one"></div>
+    <script>
+      // 1. 页面盒子正常适配
+      document.documentElement.style.fontSize =
+        (document.documentElement.clientWidth * 100) / 375 + 'px'
+
+      // 2. 1px不参与适配
+
+      // 3. 动态计算,让布局视口变大n倍(像素比决定多少倍)
+      const viewport = document.querySelector('meta[name=viewport]')
+      console.log(viewport)
+      // 计算应该放大多少倍
+      const scale = 1 / window.devicePixelRatio
+      // 给initial-scale赋值,让布局视口变大
+      viewport.setAttribute(
+        'content',
+        'width=device-width, initial-scale=' + scale
+      )
+      // console.log(document.documentElement.clientWidth)
+
+      // 此时,边框被一个物理像素渲染了,但是整个布局乱了.
+      // 让页面上所有的盒子放大两倍
+      // 修改根标签的字体大小,乘以2
+      // parseInt
+      // parseFloat
+      const fontSize =
+        parseFloat(document.documentElement.style.fontSize) *
+        window.devicePixelRatio
+      // console.log(fontSize)
+      document.documentElement.style.fontSize = fontSize + 'px'
+    </script>
+  </body>
+</html>

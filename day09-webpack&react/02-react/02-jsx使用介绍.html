@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!-- 引入react包 react.js react-dom.js -->
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="js/babel.min.js"></script>
+
+    <!-- type="text/babel" s声明这个script中的代码,需要被babel编译
+    
+        编译之后,其实就变成了命令式的代码(React.createElement)
+    
+    -->
+    <script type="text/babel">
+      //需求:
+      //   <div id="box">
+      //       <h1>react</h1>
+      //       <p>
+      //         <span>jsx</span>
+      //       </p>
+      //   </div>
+
+      // 声明式: jsx 是语法糖 (注意: 不是新的语法,在执行的时候,先将语法糖编译成传统的写法,再执行) 语法糖的目的是为了让写代码更简单
+      const div = (
+        <div id="box">
+          <h1>react</h1>
+          <p>
+            <span>jsx</span>
+          </p>
+        </div>
+      )
+
+      //   ReactDOM.render(被渲染的react元素, 渲染的位置(真正的dom元素))
+      // 作用: 将虚拟dom转成一个真实dom,并渲染到指定位置的方法
+      ReactDOM.render(div, document.getElementById('root'))
+    </script>
+  </body>
+</html>

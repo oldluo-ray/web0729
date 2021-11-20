@@ -1,0 +1,68 @@
+.wrap {
+  background-color: #fff;
+  width: 100vw;
+  height: 100vh;
+}
+.input-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.input-code {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.input-code span {
+  border-left: 1px solid #666; /*no*/
+  padding-left: 15px;
+  font-size: 12px;
+  height: 35px;
+  line-height: 35px;
+  /* background-color: pink; */
+}
+
+.btn-login {
+  border-radius: 50px;
+}
+.link-rl {
+  display: flex;
+  justify-content: space-between;
+}
+.link-rl a {
+  color: #666;
+}
+.line-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.line {
+  width: 100px;
+  height: 1px; /*no*/
+  background-color: #666;
+}
+.icon-wrap {
+  display: flex;
+  justify-content: space-around;
+}
+.icon-wrap i {
+  font-size: 50px;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+}
+.icon-wrap i.icon-github {
+  background-color: rgb(104, 102, 102);
+}
+.icon-wrap i.icon-wechat {
+  background-color: rgb(35, 197, 43);
+}
+.icon-wrap i.icon-qq {
+  background-color: rgb(94, 170, 214);
+}
+.bottom {
+  text-align: center;
+}

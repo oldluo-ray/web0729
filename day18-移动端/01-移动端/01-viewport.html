@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- width属性决定了布局视口的宽度 
+    取值: 
+        device-width: 当前设备的设备独立像素的宽度
+        数字: 直接写死一个数字,但是有兼容性问题,几乎不使用
+    -->
+    <!-- <meta name="viewport" content="width=375" /> -->
+    <!-- 
+        initial-scale属性决定了布局视口的宽度
+
+        scale = 设备独立像素宽度  /  布局视口宽度。
+     -->
+    <!-- <meta name="viewport" content="initial-scale=1" />-->
+
+    <!-- 注意: 如果width和inital-scale的值冲突,以较大值为主 -->
+    <meta name="viewport" content="width=device-width,initial-scale=0.5" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      console.log(document.documentElement.clientWidth)
+    </script>
+  </body>
+</html>

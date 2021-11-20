@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box"></div>
+    <script>
+      const box = document.getElementById('box')
+
+      function tap(element, fn) {
+        let start
+        element.ontouchstart = function (e) {
+          start = Date.now()
+        }
+        element.ontouchend = function (e) {
+          const end = Date.now()
+          const duration = end - start
+          if (duration <= 300) {
+            fn(e)
+          }
+        }
+      }
+
+      tap(box, function (e) {
+        console.log('事件对象', e, '封装的移动端点击事件触发了')
+      })
+    </script>
+  </body>
+</html>

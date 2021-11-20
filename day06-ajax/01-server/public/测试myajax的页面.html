@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn">按钮</button>
+    <button id="btn1">按钮1</button>
+    <!-- <script src="06-myajax.js"></script> -->
+    <script src="./07-myajax-promise.js"></script>
+    <script>
+      const btn = document.getElementById('btn')
+      const btn1 = document.getElementById('btn1')
+      btn.onclick = function () {
+        myAjax({
+          url: 'http://127.0.0.1:5000/test',
+          // type: 'post',
+          data: {
+            name: 'zs',
+          },
+          timeout: 1000,
+          dataType: 'text',
+          success(data) {
+            console.log('响应成功', data)
+          },
+          // complete() {
+          //   console.log('响应完成')
+          // },
+          error() {
+            console.log('响应失败')
+          },
+          // beforeSend() {
+          //   console.log('请求发送之前')
+          //   return null
+          // },
+        })
+      }
+
+      btn1.onclick = async function () {
+        const result = await myAjax({
+          url: 'http://127.0.0.1:5000/test',
+          // type: 'post',
+          data: {
+            name: 'zs',
+          },
+          timeout: 1000,
+          dataType: 'text',
+        })
+
+        console.log(result)
+      }
+    </script>
+  </body>
+</html>

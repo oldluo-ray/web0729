@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #app {
+        background-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="js/vue.js"></script>
+
+    <div id="app" @click.self="handle1">
+      <!-- 注意: 模板中可以直接使用vm实例身上的所有的属性和方法
+        由于vm实例代理. data数据所以,在模板中可以直接使用data数据
+      -->
+      <h1>欢迎来尚硅谷学习{{msg}}</h1>
+      <button v-on:click="handle">点我展示信息(v-on绑定)</button><br /><br />
+      <button @click="handle">点我展示信息(@绑定)</button><br /><br />
+      <!-- handle() 表达的意思不是函数调用.而是当函数触发时,要给事件处理函数手动传递一些数据 -->
+      <!-- 注意: 如果不手动传递数据,事件处理函数默认接收到事件对象.但是如果手动传递数,事件处理函数就只能接收到数据,丢失了事件对象.如果数据和事件对象都要传递,则写一个$event,传给事件处理函数即可 -->
+      <button @click="handle(count,$event)">点我展示信息(传递参数)</button
+      ><br /><br />
+      <a href="http://www.atguigu.com" @click.prevent="handle"
+        >点我展示信息(阻止默认事件)</a
+      ><br /><br />
+      <button @click.stop="handle">点我展示信息(阻止冒泡)</button><br /><br />
+      <a href="http://www.atguigu.com" @click.stop.prevent="handle"
+        >点我展示信息(阻止默认事件+冒泡)</a
+      ><br /><br />
+      <input
+        type="text"
+        placeholder="按下回车键展示信息"
+        @keyup.enter="handle"
+      />
+      <button @click.once="handle">只触发一次</button><br /><br />
+      <button @click="msg=123123">直接执行代码</button><br /><br />
+    </div>
+
+    <script>
+      // const vm = new Vue({
+      new Vue({
+        el: '#app',
+        data: {
+          msg: 'hello vue',
+          count: 99,
+        },
+        methods: {
+          handle(e, a) {
+            // this一定指向当前vue实例或组件实例
+            // console.log(this.msg)
+            // 不被vue控制的函数,一般要写成箭头函数
+            // setTimeout(() => {
+            //   console.log(this.msg)
+            // }, 1000)
+            // console.log(e, a)
+            // e.preventDefault()
+            // e.stopPropagation()
+            // if (e.keyCode !== 13) return
+            // console.log(e)
+            console.log('触发了')
+          },
+          // 注意: methods中的函数不要写箭头函数(被vue控制的函数,都不能写箭头函数)
+          // handle: () => {
+          //   console.log(this)
+          // },
+          handle1() {
+            console.log('app触发了')
+          },
+        },
+      })
+    </script>
+  </body>
+</html>

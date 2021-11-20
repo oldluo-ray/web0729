@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   function Person(name, age) {
+      //     // 一个对象私有属性,直接写在构造函数中,会直接添加到每一个对象上
+      //     this.name = name
+      //     this.age = age
+      //     // this.say = function () {
+      //     //   console.log(this.name)
+      //     // }
+      //   }
+
+      //   // 一个对象公共的属性,会写在原型上.为了节省内存
+      //   Person.prototype.say = function () {
+      //     console.log(this.name)
+      //   }
+
+      //   function Student(name, age, score) {
+      //     // this.name = name
+      //     // this.age = age
+      //     // 借用构造函数法(继承私有属性)
+      //     Person.call(this, name, age)
+      //     this.score = score
+      //   }
+      //   // 继承Person原型上的公共属性
+      //   Student.prototype = new Person()
+
+      class Person {
+        constructor(name, age) {
+          this.name = name
+          this.age = age
+        }
+
+        // 这个say就直接添加到了原型上
+        say() {
+          console.log(this.name)
+        }
+      }
+
+      class Student extends Person {
+        constructor(name, age, score) {
+          // super就是父类的构造函数
+          super(name, age)
+          this.score = score
+        }
+      }
+
+      const p1 = new Person('zs', 18)
+      const p2 = new Person('ls', 28)
+      console.log(p1)
+      console.log(p2)
+      p1.say()
+      p2.say()
+
+      const s1 = new Student('xx', 18, 100)
+      console.log(s1)
+      s1.say()
+    </script>
+  </body>
+</html>

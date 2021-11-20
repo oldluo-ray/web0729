@@ -1,0 +1,19 @@
+h1 {
+  border: 1px solid black;
+}
+.img {
+  width: 200px;
+  height: 200px;
+  border: 1px solid green;
+  background-size: 100%;
+  background-color: pink;
+}
+.react {
+  background-image: url('../images/react.jpg');
+}
+.vue {
+  background-image: url('../images/vue.png');
+}
+div {
+  display: flex;
+}

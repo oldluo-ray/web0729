@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="vewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 1. 引入vue.js -->
+    <script src="./js/vue.js"></script>
+    <!-- 2. 定义一个根标签(定义模板) -->
+    <div id="root">
+      姓: <input type="text" v-model="firstName" /> <br />
+      名: <input type="text" v-model="lastName" /> <br />
+      全名: {{fullName}} <br />
+      <button @click="fullName = 'xxxx'">按钮</button>
+    </div>
+
+    <!-- 3. 创建vue实例,管理html标签(管理模板) -->
+    <script>
+      new Vue({
+        el: '#root',
+        data: {
+          firstName: '张',
+          lastName: '三',
+        },
+        // methods: {
+        //   fullName() {
+        //     return this.firstName + '-' + this.lastName
+        //   },
+        // },
+        computed: {
+          // fullName是一个会添加到vm实例上的新的属性
+          // 计算属性的值是由已有的属性计算得来的
+          // 完整写法:
+          // fullName: {
+          //   get() {
+          //     console.log('fullNamegetter执行了')
+          //     // getter的触发时机: 1. 初始化时执行一次 2. 依赖的数据发生变化了,就会调用
+          //     return this.firstName + '-' + this.lastName
+          //   },
+          //   set(val) {
+          //     console.log('fullName的setter调用了', val)
+          //   },
+          // },
+          // 一般计算属性只需要写getter,所以可以简写
+          // 简写之后,fullName这个函数,就相当于是原来的getter
+          fullName() {
+            return this.firstName + '-' + this.lastName
+          },
+        },
+      })
+    </script>
+  </body>
+</html>

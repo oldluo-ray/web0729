@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 过滤器的总结: 
+    
+      1. 定义局部过滤器
+        new Vue({
+          ...,
+          filters:{
+            过滤器名(值, 参数){
+              return 过滤之后的结果
+            }
+          }
+        })
+      
+      2. 使用: 
+      {{原始值 | 过滤器名 | 过滤器名}}
+      v-bind:属性="原始值 | 过滤器名(参数) | 过滤器名"
+
+      注意: 过滤器不会修改原始值, 也不能配合v-model使用,过滤器中的this指向的是window
+    -->
+    <script src="js/dayjs.min.js"></script>
+    <script src="js/vue.js"></script>
+    <div id="app">
+       {{date | formatTime('HH:mm:ss')}}
+    </div>
+
+    <div id="root">
+        {{date | formatTime}}
+    </div>
+    </div>
+
+    <script>
+      // 定义全局过滤器,所有的模板中都可以使用
+      // Vue.filter('过滤器名',(初始值)=>{
+      //   return 过滤之后的结果
+      // })
+      Vue.filter('formatTime',(val,formatStr = 'YYYY-MM-DD')=>{
+        return dayjs(val).format(formatStr)
+      })
+
+      new Vue({
+        el: '#app',
+        data: {
+         date: Date.now()
+        },
+        // 定义局部过滤器
+        // 注意: 局部过滤器只能在当前vm实例 所绑定的模板中使用
+        // filters: {
+         
+        //   formatTime(val, formatStr = 'YYYY-MM-DD HH:mm:ss') {
+        //     return dayjs(val).format(formatStr)
+        //   },
+       
+        // },
+      })
+   
+   
+      new Vue({
+        el: '#root',
+        data: {
+          date: 1627782043839
+        },
+         // 定义局部过滤器
+           // 注意: 局部过滤器只能在当前vm实例 所绑定的模板中使用
+      //    filters: {
+         
+      //   formatTime(val, formatStr = 'YYYY-MM-DD HH:mm:ss') {
+
+      //      return dayjs(val).format(formatStr)
+      //    },
+      
+      //  },
+      })
+   </script>
+  </body>
+</html>

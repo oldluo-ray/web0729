@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="./js/vue.js"></script>
+
+    <div id="app">
+      <div id="one">{{count}}</div>
+      <button @click="count = count + 1">按钮</button>
+      <button @click="$destroy()">卸载</button>
+    </div>
+
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          count: 0,
+        },
+        // 初始化阶段
+        beforeCreate() {
+          console.log('beforeCreate', this, '还没有代理:' + this.msg)
+        },
+        created() {
+          console.log('created', this, '代理了:' + this.msg)
+        },
+
+        // 挂载阶段
+        beforeMount() {
+          console.log(
+            'beforeMount',
+            this,
+            '还没有将虚拟dom创建成真实dom渲染到页面上',
+            document.querySelector('#one')
+          )
+        },
+        mounted() {
+          console.log(
+            'mounted',
+            this,
+            '已经渲染到页面上了',
+            document.querySelector('#one')
+          )
+        },
+
+        // 更新阶段
+        // beforeUpdate() {
+        //   console.log(
+        //     'beforeUpdate',
+        //     this.count,
+        //     document.querySelector('#one').innerText
+        //   )
+        // },
+        // updated() {
+        //   console.log(
+        //     'updated',
+        //     this.count,
+        //     document.querySelector('#one').innerText
+        //   )
+        // },
+
+        //卸载
+
+        beforeDestroy() {
+          console.log('beforeDestroy', this.count)
+        },
+        destroyed() {
+          console.log('destroyed', this.count)
+        },
+      })
+    </script>
+  </body>
+</html>

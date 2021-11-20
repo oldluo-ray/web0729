@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>欢迎登录,<span>xxxxx</span></h1>
+  </body>
+  <script>
+    // 获取浏览器地址栏的查询字符串
+    // const username = location.search.split('=')[1]
+    // document.querySelector('span').innerText = username
+
+    // 从cookie中获取用户名
+    // console.log(document.cookie.split('=')[1])
+    const username = document.cookie.split('=')[1]
+    document.querySelector('span').innerText = username
+  </script>
+</html>

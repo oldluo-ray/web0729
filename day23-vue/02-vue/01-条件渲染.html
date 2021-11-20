@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="js/vue.js"></script>
+    <div id="app">
+      <!-- >18 -->
+      <!-- <div v-if="age > 18">郑文宾</div> -->
+      <!-- < 16 -->
+      <!-- <div v-else-if="age < 16">sa</div> -->
+      <!-- 16~18 -->
+      <!-- <div v-else>yyds</div> -->
+
+      <!-- 只是隐藏 -->
+      <div v-show="isLike">sa</div>
+      <!-- 删除标签 -->
+      <div v-if="isLike">郑文宾</div>
+    </div>
+
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          age: 15,
+          isLike: false,
+        },
+      })
+    </script>
+  </body>
+</html>

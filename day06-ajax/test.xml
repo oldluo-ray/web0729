@@ -1,0 +1,13 @@
+<students>
+    <student>
+        <name>zs</name>
+        <age>18</age>
+        <sex>男</sex>
+    </student>
+      <student>
+        <name>ls</name>
+        <age>9</age>
+        <sex>女</sex>
+    </student>
+</students>
+

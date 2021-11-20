@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" /><span></span>
+    <div style="display: none">正在验证,请稍后....</div>
+
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+      $('input').on('keyup', (e) => {
+        // 判断是否是回车
+        if (e.keyCode !== 13) return
+        // 获取用户输入内容
+        const value = $('input').val().trim()
+        // 判断是否有值
+        if (!value) return
+
+        //发送ajax请求
+        $.ajax({
+          url: 'http://127.0.0.1:5000/verifyUsername',
+          type: 'post',
+          data: {
+            name: value,
+          },
+          // dataType:'json' 将响应回来的json字符串,直接解析成对象 json是默认值
+          // dataType: 'text',
+          // timeout: 1000,
+          beforeSend() {
+            // console.log('请求发送之前调用')
+            // 注意: 只有显式的return false,才不发送请求
+            // return null
+
+            $('div').show()
+          },
+          success(result) {
+            // data就是响应回来的数据
+            // jquery的成功的回调中,拿到的数据,就是解析后的数据(对象)
+            // console.log('请求成功', result)
+            if (result.code === 100) {
+              // 可用
+              $('span').text(result.msg)
+              $('span').css('color', 'green')
+            } else {
+              //不可用
+              $('span').text(result.msg)
+              $('span').css('color', 'red')
+            }
+          },
+          error(xhr) {
+            // console.log('请求失败了', xhr)
+            $('span').text('网络异常,请稍后再试...')
+          },
+          complete() {
+            // console.log('请求完成了')
+            $('div').hide()
+          },
+        })
+      })
+    </script>
+  </body>
+</html>

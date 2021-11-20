@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      [v-cloak] {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="js/vue.js"></script>
+    <div id="app">
+      <div>{{count}}</div>
+      <!-- 下面这个div,添加了v-big绑定了count.则div中的子节点渲染count * 10的值 -->
+      <!-- 使用自定义指令时需要加v- -->
+      <div v-big="count">123</div>
+      <input type="text" v-focus="count" />
+      <button @click="count= count+1">按钮</button>
+    </div>
+
+    <div id="root">
+      <div>{{count}}</div>
+      <!-- 下面这个div,添加了v-big绑定了count.则div中的子节点渲染count * 10的值 -->
+      <!-- 使用自定义指令时需要加v- -->
+      <div v-big="count">123</div>
+      <button @click="count= count+1">按钮</button>
+    </div>
+    <script>
+      // 定义全局的自定义指令
+      Vue.directive('big', (element, binding) => {
+        element.innerText = binding.value * 10
+      })
+
+      new Vue({
+        el: '#app',
+        data: {
+          count: 1,
+        },
+        // 定义自定义指令
+        directives: {
+          // 定义自定义指令时不需要写v-
+          // big: {
+          //   bind(element, binding) {
+          //     // console.log('表示元素和指令绑定成功了', element, binding)
+          //     element.innerText = binding.value * 10
+          //   },
+          //   // inserted(element, binding) {
+          //   //   console.log('绑定了指令的元素插入到dom树上了', element, binding)
+          //   // },
+          //   update(element, binding) {
+          //     // console.log('绑定了指令的元素重新解析了', element, binding)
+          //     element.innerText = binding.value * 10
+          //   },
+          // },
+
+          // 简写: 由于大部分自定义指定都只使用bind和update.并且里面的逻辑一样,所以一般直接简写
+          // 这个简写,模拟了bind和update
+          // big(element, binding) {
+          //   element.innerText = binding.value * 10
+          // },
+
+          focus: {
+            bind(element, binding) {
+              element.value = binding.value
+            },
+            inserted(element, binding) {
+              element.focus()
+            },
+            update(element, binding) {
+              element.value = binding.value
+            },
+          },
+        },
+      })
+
+      new Vue({
+        el: '#root',
+        data: {
+          count: 2,
+        },
+      })
+    </script>
+  </body>
+</html>

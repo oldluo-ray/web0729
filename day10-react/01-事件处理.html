@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.min.js"></script>
+
+    <script type="text/babel">
+      //   const div = (
+      //     <div>
+      //       {/*
+
+      //            1. react底层会根据虚拟dom,创建真实dom
+      //             const btn = document.createElement('button')
+      //            2. 在react底层,给btn按钮注册点击事件
+      //             btn.onclick = function(e){
+      //                 // 当用户点击了真实dom按钮,底层真正的事件处理函数触发,在事件处理函数中调用了我们在jsx中定义的函数
+      //                 fn(e)
+      //             }
+
+      //         */}
+      //       <button
+      //         onClick={(e) => {
+      //           //   e.persist()
+      //           console.log(e) // 合成事件(react对事件对象进行了重新定义.目的是为了底层执行时提高性能,并且解决兼容问题)
+      //           console.log(e.target)
+      //           console.log(e.target)
+
+      //           console.log(this)
+      //         }}
+      //       >
+      //         按钮
+      //       </button>
+      //       <input
+      //         type="text"
+      //         onKeyUp={function (e) {
+      //           console.log(e.keyCode)
+      //         }}
+      //       />
+      //     </div>
+      //   )
+
+      const link = (
+        <a
+          href="http://www.atguigu.com"
+          onClick={function (e) {
+            console.log('a标签被点击了')
+
+            // return false 无效
+            e.preventDefault()
+          }}
+        >
+          点击
+        </a>
+      )
+
+      ReactDOM.render(link, document.getElementById('root'))
+    </script>
+  </body>
+</html>

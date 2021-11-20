@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="js/vue.js"></script>
+    <div id="app">
+      <ul>
+        <!-- <li v-for="(item,index) of arr" :key="index">{{item}}, {{index}}</li> -->
+        <!-- <li v-for="(value,key) in arr" :key="key">{{value}}, {{key}}</li>
+        <li v-for="(value,key) in obj" :key="key">{{value}}, {{key}}</li>
+        <li v-for="(value,key) in str" :key="value">{{value}}, {{key}}</li> -->
+        <!-- <li v-for="(value,key) in num" :key="value">{{value}}, {{key}}</li> -->
+        <li v-for="item,index in arr" :key="index">
+          {{index}}
+          <ul>
+            <li v-for="item,index in item" :key="index">{{item}}</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          // arr: ['a', 'b', 'c'],
+          // obj: {
+          //   name: 'zs',
+          //   age: 18,
+          //   sex: '女',
+          // },
+          // str: 'abcdef', //['a','b','c','d','e','f']
+          // num: 5, //[1,2,3,4,5]
+          arr: [
+            { name: 'zs', age: 18 },
+            { name: 'ls', age: 20 },
+          ],
+        },
+      })
+    </script>
+  </body>
+</html>

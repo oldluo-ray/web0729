@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 在ejs模板中可以直接写传入的对象的属性 -->
+    <h1>欢迎登录,<span><%= name %></span></h1>
+
+    <!-- 注意: <%%> 中不写-或=值不会渲染到页面上. - 会解析html = 不会解析html -->
+    <!-- 一般不适用-. 因为有xss攻击的隐患 -->
+    <h1>欢迎登录,<span><%- test %></span></h1>
+    <h1>欢迎登录,<span><%= test %></span></h1>
+  </body>
+  <!-- <script>
+    // 获取浏览器地址栏的查询字符串
+    const username = location.search.split('=')[1]
+    document.querySelector('span').innerText = username
+  </script> -->
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        
+            模块化的重点就是导入和导出
+            在node中默认支持commonjs的导入和导出方式
+
+            导入时: 
+                1. 如果要导入的模块是内置模块或第三方模块,那么只需要些模块名即可
+                2. 如果要导入的模块是自定义模块,就需要写路径
+        
+            导出: 
+                module.exports = {}
+                module.exports.xxx = {}
+                exports.xxx = {}
+
+                exports = {}
+                注意: 导出时,其实导出的是module.exports所指向的值,所以如果直接给exports赋值,会导致module.exports 和 exports所指向的值不是同一个,就导致最终无法获取到你想要的内容
+                module.exports = exports = {}
+        
+        
+        
+          初始化包: 
+            npm init 会询问信息
+            npm init -y 不回询问（默认将文件夹的名字当做包的名字）
+            包名的注意点: 1. 包名绝不能是中文 2. 不能使用大写 3. 包名不可以和未来要下载的本地包重名
+            决定一个包的名字的唯一位置,就是package.json中name属性
+
+          下载包: 
+
+            本地包(js文件) 下载时要注意下载路径,要在当前项目的目录下 npm i 包名@x.x.x 包名
+            全局包(应用程序) 下载时不需要关心路径 直接下载即可 记得加 -g
+
+          修改npm下载路径
+          获取: npm config get registry   
+          修改: npm config set registry 新的url地址
+
+          查看全局包列表 指令: 
+          npm ls -g --depth 0
+
+
+
+          
+        
+        
+        
+        
+        
+        */
+    </script>
+  </body>
+</html>

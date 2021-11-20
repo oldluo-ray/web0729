@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!-- 引入react包 react.js react-dom.js -->
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="js/babel.min.js"></script>
+
+    <script type="text/babel">
+      // 在jsx中如何动态的插入数据. 可以使用插值表达式 {}
+      // 插值表达式中,可以写任意的js表达式
+      // 什么js表达式: 有结果的一段代码就是表达式
+      // 变量
+      // 常量
+      // 字面量: 1 true [] {} function(){}
+      // 运算:  一般的计算, 与或非逻辑, 三元
+      // 条件判断语句,循环语句,声明语句(不包含声明函数)不是表达式,不能写入插值表达式
+      const obj = {
+        username: 'hj',
+        age: 68,
+        sex: 'unkown',
+        info: 'lsp',
+      }
+
+      // 总结:
+      // jsx中的插值表达式可以写任何的js表达式.但是如果插值表达式中值是为了渲染则不能写普通对象, 函数以及布尔值
+
+      // 判断一个插值表达式中的值是否要渲染的依据: 这个插值表达式是否写在标签的子节点的位置
+      const div = (
+        <div id="box" i="0" className="one" htmlFor="123">
+          <h1>react</h1>
+          <p>
+            <span >{obj.username}</span> <br />
+            <span>{obj.age}</span> <br />
+            <span>{obj.sex}</span>
+            <br />
+            <span>{obj.info}</span>
+            <br />
+            <span>{'567'}</span>
+            {/* jsx里面的注释: 注意: 插值表达式里面可以写布尔值,但是不会渲染*/}
+            <span>{true}</span>
+            <br />
+            {/*  注意: 插值表达式里面可以写数组,可以渲染. 但是是把数组中的每一项当做子节点渲染. 不是把数组toString()之后渲染*/}
+            <span>{['a', 'b', 'c']}</span>
+            <br />
+            <span>{'abc'}</span>
+            <br />
+            {/*  注意: 插值表达式里面可以写对象,不可以渲染. 因为一个普通的对象渲染没有意义,会报错*/}
+            {/* <span>{obj}</span>
+            <br />*/}
+            {/*  注意: 插值表达式里面可以虚拟dom,可以渲染*/}
+            <span>{<i>我是一个标题标签</i>}</span>
+            <br />
+            <span>{true ? 1 : 2}</span>
+            <br />
+            <span>{'123' && 678}</span>
+            <br />
+          </p>
+        </div>
+      )
+
+      ReactDOM.render(div, document.getElementById('root'))
+    </script>
+  </body>
+</html>

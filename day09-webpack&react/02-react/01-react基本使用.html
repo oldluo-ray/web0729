@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!-- 引入react包 react.js react-dom.js -->
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+
+    <script>
+      // 返回一个虚拟dom(react对象), 用来描述未来要创建的真实dom的信息
+      //   const div = React.createElement('标签名', {标签的属性: 值}, 子节点, 子节点)
+      //   const span = React.createElement('span')
+      //   const h1 = React.createElement('h1')
+      //   const p = React.createElement('p', {}, span)
+      //   const div = React.createElement('div', { id: 'box' }, h1, p)
+      //   console.log(div)
+
+      //需求:
+      // <div id="box">
+      //     <h1></h1>
+      //     <p>
+      //       <span></span>
+      //     </p>
+      // </div>
+
+      //   ReactDOM.render(被渲染的react元素, 渲染的位置(真正的dom元素))
+      // 作用: 将虚拟dom转成一个真实dom,并渲染到指定位置的方法
+      ReactDOM.render(div, document.getElementById('root'))
+    </script>
+  </body>
+</html>

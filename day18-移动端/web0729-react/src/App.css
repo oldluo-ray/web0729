@@ -1,0 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.one {
+  width: 345px;
+  height: 150px;
+  margin: 15px;
+  /*postcss这个包会自动将所有的px,改成rem. 如果有些样式不需要修改,就在后面加一个no的注释即可*/
+  border: 1px solid black; /*no*/
+  box-sizing: border-box;
+  background-color: red;
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .one {
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 
+       
+      jsx 是语法糖: 被babel解析,最终解析成了React.createElement()
+
+      jsx中如果要动态的插入数据,或动态的控制标签的属性,可以使用插值表达式
+
+
+      1. jsx的插值表达式可以写什么
+
+        可以写任何的js表达式
+
+
+      2. jsx的插值表达式可以写在哪里
+
+         可以写在标签的子节点
+           写在子节点是为了渲染. 
+           注意: 
+            1.不要直接渲染一个普通对象,函数,布尔值,undefined
+            2. 如果渲染数组,会将数组中的每一个元素,当做子节点渲染出来
+
+         可以写在标签的属性值的位置
+            写在属性值的位置,是为了控制属性 
+
+
+      3. 如何注册事件
+          注意: 事件名和原生是一样的,但是写的时候要写成小驼峰
+          <div onClick={事件处理函数}></div>
+
+      4. 添加样式
+          类名 className
+          行内 style={{属性: 值, 属性: 值}}
+          注意: 
+            1. style的值必须是一个对象
+            2. 属性如果有-.应该写成小驼峰
+            3. 单位可以忽略,其他特殊单位写成字符串
+
+
+
+
+
+
+     -->
+    <div id="root"></div>
+    <!-- 引入react包 react.js react-dom.js -->
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="js/babel.min.js"></script>
+
+    <script type="text/babel">
+      const div = (
+        <div id="box" i="0" className="one" htmlFor="123">
+          <h1>react</h1>
+          <div>
+            <input type="text" value={'hello'} />
+            <input type="checkbox" checked={false} />
+            <button
+              onClick={function () {
+                alert('按钮点击了')
+              }}
+            >
+              按钮
+            </button>
+            <div
+              className="one"
+              style={{ fontSize: 40, backgroundColor: 'red' }}
+            >
+              样式
+            </div>
+          </div>
+        </div>
+      )
+
+      ReactDOM.render(div, document.getElementById('root'))
+    </script>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+.keys-list {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  right: 3px;
+  top: 20px;
+  z-index: 99999;
+}
+.keys-list a {
+  margin-top: 10px;
+}
+.am-list-body {
+  padding-right: 15px;
+}
+/* .fixed-top {
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  border-bottom: 1px solid #ccc;
+} */

@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+/* 注意: 协作开发的时候,很有可能类名会冲突. 所以detail.css改名为detail.module.cs 此时react脚手架,会帮我们将css中的类名重命名 .新的类名格式: 文件名_类名_随机值 
+
+引入时: 
+  原来: import './detail.css'
+  现在: import style from './detail.module.css'
+  style是一个对象: 键就是我们源代码中的类名,值就是重新命名的类名.最终使用新的类名
+*/
+.wrap {
+  width: 100vw;
+  height: 100vh;
+  background-color: green;
+}
+
+.test {
+  border: 1px solid black;
+}

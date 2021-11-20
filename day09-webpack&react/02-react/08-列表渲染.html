@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!-- 引入react包 react.js react-dom.js -->
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="js/babel.min.js"></script>
+
+    <script type="text/babel">
+      // 列表渲染
+
+      const arr = [
+        {
+          username: 'dbj',
+          age: 18,
+          sex: 'male',
+          info: '红浪漫vi屁中屁',
+        },
+        {
+          username: 'hj',
+          age: 67,
+          sex: 'male',
+          info: 'lsp屁中屁',
+        },
+      ]
+
+      // const ul = <ul>{[<li>1</li>, <li>2</li>, <li>3</li>]}</ul>
+
+      const newArr = arr.map((item, index) => {
+        return (
+          // 注意: 一段jsx,有且只有一个根标签. 如果要列表渲染,要给最外面的根标签添加key属性,值不能重复.目的是为了底层执行时,性能更高
+          <div key={index}>
+            <li>
+              <h1>{item.username}</h1>
+              <p>{item.age}</p>
+              <p>{item.sex}</p>
+              <p>{item.info}</p>
+            </li>
+            <p></p>
+          </div>
+        )
+      })
+
+      // 列表渲染的核心,就是将要渲染的标签,放到一个数组中,然后直接渲染数组
+      const ul = <ul>{newArr}</ul>
+
+      ReactDOM.render(ul, document.getElementById('root'))
+    </script>
+  </body>
+</html>

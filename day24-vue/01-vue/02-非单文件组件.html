@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="./js/vue.js"></script>
+
+    <div id="app">
+      <!-- 3. 使用组件 -->
+      <!-- 使用组件时名字的注意问题: 
+        1. 单个单词,大小写忽略
+        2. 多个单词,注册时使用小驼峰,使用时要写成-
+    -->
+      <xxx></xxx>
+      <xxx></xxx>
+    </div>
+
+    <script>
+      // 创建一个新的组件,这个新组件要在test组件中使用
+      const demo = Vue.extend({
+        template: `
+            <h1>demo组件</h1>
+          `,
+      })
+      // 1.创建组件
+      const test = Vue.extend({
+        //   定义当前组件的结构
+        template: `
+            <div id="one">
+                <p>第一个自定义组件</p>
+                <div>{{count}}</div>
+                <button @click="handle">按钮</button>
+                <hr />
+                <demo></demo>
+            </div>
+          `,
+        //   在组件中data必须是一个函数返回一个对象
+        data() {
+          return {
+            count: 0,
+          }
+        },
+
+        methods: {
+          handle() {
+            this.count = this.count + 1
+          },
+        },
+        // components: {
+        //   demo,
+        // },
+      })
+      // 全局注册组件
+      Vue.component('xxx', test)
+      Vue.component('demo', demo)
+
+      new Vue({
+        el: '#app',
+        // 2. 注册 定义的test组件,要在vue实例所绑定的模板中使用,则在创建vue实例的代码中对test组件进行注册
+        // components: {
+        //   // 键: 值
+        //   // 注意: 注册的键,决定了组件使用时的名字
+        //   xxxYyy: test,
+        // },
+      })
+    </script>
+  </body>
+</html>

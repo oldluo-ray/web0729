@@ -1,0 +1,2 @@
+export const CHECK_ALL_TODO = 'CHECK_ALL_TODO'
+export const CLEAR_ALL_DONE = 'CLEAR_ALL_DONE'

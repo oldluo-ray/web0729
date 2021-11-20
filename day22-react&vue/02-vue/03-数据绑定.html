@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="vewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 1. 引入vue.js -->
+    <script src="./js/vue.js"></script>
+    <!-- 2. 定义一个根标签(定义模板) -->
+    <div id="root">
+      <input type="text" v-bind:value="msg1" />
+      <input type="text" v-model:value="msg2" />
+    </div>
+
+    <!-- 3. 创建vue实例,管理html标签(管理模板) -->
+    <script>
+      new Vue({
+        el: '#root',
+        data: {
+          msg1: 'hehe',
+          msg2: '哈哈',
+        },
+      })
+    </script>
+  </body>
+</html>

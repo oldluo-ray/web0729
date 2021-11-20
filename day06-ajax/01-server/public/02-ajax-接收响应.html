@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+        在浏览器端能发出去请求的方式: 
+        1. 浏览器地址栏 get 
+        2. form表单  get/post  form表单请求是同步的,而且一定会跳转页面
+        3. link标签  get  主要请求css文件或favicon
+        4. a标签 get 类似于地址栏
+        5. script get  专门用来请求js
+        6. img get   专门用来请求图片
+    -->
+    <!-- <form action="http://127.0.0.1:5000/test">
+      <button>按钮</button>
+    </form> -->
+    <!-- <form action="" enctype="application/x-www-form-urlencoded"></form> -->
+    <button id="one">按钮1-get-ajax</button>
+    <button id="two">按钮2-post-ajax</button>
+    <script>
+      // 注意: 一定不要直接打开文件,或通过live server打开文件,而是将文件放到服务器中,通过访问静态资源的形式访问文件
+      // 总结:
+      // 1. ajax是浏览器端提供的一个发送请求的技术
+      // 2. ajax的特点: 1. 异步的, 2. 不会跳转页面
+      // 3. ajax的使用:
+      const btn1 = document.querySelector('#one')
+      const btn2 = document.querySelector('#two')
+
+      btn2.onclick = function () {
+        // 利用ajax技术,发送post请求
+        //   1. 创建xhr对象
+        const xhr = new XMLHttpRequest()
+        // 2. 设置请求首行(设置请求方式和请求的url地址)
+        // xhr.open('请求方式', 'url地址')
+        // console.log(xhr.readyState)
+        xhr.open('post', 'http://127.0.0.1:5000/test')
+
+        // 3. 应该设置请求头了,但是get请求可以忽略,post必须写,如果不写的问题: 请求会发送给服务器,但是上传的数据,服务器就接收
+        xhr.setRequestHeader(
+          'content-type', //用来描述请求主体中数据的格式
+          'application/x-www-form-urlencoded'
+        )
+
+        // 4. 发送请求,设置请求主体,小括号里面的内容就是请求主体的内容
+        xhr.send('username=sa&age=18')
+
+        // console.log(xhr.readyState)
+        // 接收响应
+        // 需要监听xhr.readyState的变化
+        xhr.onreadystatechange = function () {
+          // 这个事件,可以监听到readyState的变化
+          // 注意: 这个回调函数,只会被调用3次
+          // console.log(xhr.readyState)
+          if (xhr.readyState === 4) {
+            // 表示响应完成, 不代表成功,失败也算完成
+            console.log('响应完成')
+            if (xhr.status === 200) {
+              // 表示响应成功
+              // console.log('响应成功')
+              // 服务器响应回来的数据,一定在响应主体中
+              console.log(xhr.responseText) // 可以获取到响应主体中的信息
+              // 注意: 浏览器接受到的一定一个字符串
+            }
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

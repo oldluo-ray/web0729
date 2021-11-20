@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="vewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 1. 引入vue.js -->
+    <script src="./js/vue.js"></script>
+    <!-- 2. 定义一个根标签(定义模板) -->
+    <div id="root">
+      <h1>插值语法</h1>
+      <h2>你好,{{name}}</h2>
+      <hr />
+      <h1>指令语法</h1>
+      <a :href="obj[Object.keys(obj)[0]]">{{Object.keys(obj)[0]}}</a>
+      <a :href="obj[Object.keys(obj)[1]]">{{Object.keys(obj)[1]}}</a>
+    </div>
+
+    <!-- 3. 创建vue实例,管理html标签(管理模板) -->
+    <script>
+      new Vue({
+        el: '#root',
+        data: {
+          //定义模板中要使用的数据
+          name: 'jack',
+          obj: {
+            点我去尚硅谷学习1: 'http://www.atguigu.com',
+            点我去尚硅谷学习2: 'http://www.atguigu.com',
+          },
+        },
+      })
+    </script>
+  </body>
+</html>

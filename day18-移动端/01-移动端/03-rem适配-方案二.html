@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      div {
+        width: 345/ (375/10) rem;
+        height: 150px;
+        margin: 15px;
+        background-color: skyblue;
+      }
+    </style> -->
+    <link rel="stylesheet" href="./适配方式二.css" />
+  </head>
+  <body>
+    <div></div>
+    <script>
+      // 适配:
+
+      // 1. 动态计算根标签的字体大小
+      // 根标签字体 = 设备独立像素的宽度 / 10
+      const fontSize = document.documentElement.clientWidth / 10
+
+      // 2. 给根标签添加字体大小
+      document.documentElement.style.fontSize = fontSize + 'px'
+    </script>
+  </body>
+</html>
